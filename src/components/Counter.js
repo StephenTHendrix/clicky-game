@@ -3,13 +3,15 @@ import FriendCard from "./FriendCard";
 // import Title from "./Title"
 import friends from "../friends.json"
 // import { restElement } from "@babel/types";
+import shuffle from 'shuffle-array';
+
 
 // By extending the React.Component class, Counter inherits functionality from it
 class Counter extends React.Component {
   // Setting the initial state of the Counter component
   state = {
     count: 0,
-    friends
+    friends,
   };
 
   // handleIncrement increments this.state.count by 1
@@ -19,7 +21,8 @@ class Counter extends React.Component {
   };
 
   reset = () => {
-    this.setState({ count: 0 })
+    this.setState({ count: 0 });
+    this.state.friends.forEach(friend => friend.clicked = false)
   }
 
   checkClicked = id => {
@@ -27,6 +30,7 @@ class Counter extends React.Component {
     if (chosen[0].clicked === false) {
       chosen[0].clicked = true;
       this.handleIncrement();
+      shuffle(this.state.friends);
       
     } else {
       this.reset();
