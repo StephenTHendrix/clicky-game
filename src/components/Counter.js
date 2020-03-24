@@ -17,7 +17,8 @@ class Counter extends React.Component {
   // handleIncrement increments this.state.count by 1
   handleIncrement = () => {
     // We always use the setState method to update a component's state
-    this.setState({ count: this.state.count + 1 });
+    //changed 1 to 2 for Storey test
+    this.setState({ count: this.state.count + 2 });
   };
 
   reset = () => {
